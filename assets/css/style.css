@@ -2229,3 +2229,44 @@ html[lang="ja"] .article-prose p {
   font-weight: 500;
 }
 .article-prose .callout-box p { margin: 0; }
+
+/* =============================================================
+   SMALL SCREENS
+   Two separate faults were making the page wider than the phone:
+   1. .nav-inner kept three grid columns below 700px, so the header
+      pushed the document to 485px on a 390px screen.
+   2. Grid and flex children default to min-width:auto, so one wide
+      child (a 1600px screenshot, a long heading) sized the track to
+      its content and dragged the whole column past the viewport.
+   ============================================================= */
+.lang-toggle a { white-space: nowrap; }
+.shot img, .shot picture { display: block; max-width: 100%; height: auto; }
+
+/* let tracks actually shrink */
+.hero-grid-v2 > *, .wrap > *, .sec > * { min-width: 0; }
+.hero-grid-v2 { grid-template-columns: minmax(0, 1fr); }
+
+@media (max-width: 700px) {
+  html, body { overflow-x: hidden; }
+  .nav-inner {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    column-gap: 12px;
+    padding: 12px 0;
+  }
+  .nav-right { gap: 8px; flex-wrap: nowrap; }
+  .nav-right .btn { padding: 9px 13px; font-size: 0.8125rem; white-space: nowrap; }
+  .lang-toggle a { padding: 5px 9px; font-size: 0.625rem; }
+  /* any grid on a phone collapses to one shrinkable column */
+  .hero-grid-v2, .native-compare, .card-grid, .feature-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .h1, h1.h1 { font-size: clamp(1.9rem, 8.5vw, 2.6rem); overflow-wrap: anywhere; }
+}
+
+@media (max-width: 520px) {
+  .nav-right .btn-ghost, .nav-right .btn-secondary { display: none; }
+  .nav-right .btn { padding: 8px 11px; font-size: 0.75rem; }
+  .lang-toggle { padding: 2px; }
+  .lang-toggle a { padding: 4px 7px; }
+}
