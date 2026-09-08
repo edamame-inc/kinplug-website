@@ -242,6 +242,12 @@
   ]
 }
 </script>
+
+<style>
+.shot{margin:34px 0;max-width:100%}
+.shot picture,.shot img{display:block;width:100%;height:auto;border:1px solid rgba(15,20,25,.12);border-radius:6px;background:#FBF8F2}
+.shot figcaption{font-size:.92rem;line-height:1.5;color:#5A6273;margin-top:10px}
+</style>
 </head>
 <body>
 
@@ -304,6 +310,14 @@
   <div class="wrap wrap-tight" style="padding-top:64px;">
     <div class="eyebrow" style="margin-bottom:20px;">Kinplug Dashboard</div>
     <h1 class="h1">アプリをまたいで、ひとつのダッシュボードに。</h1>
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-cross-app-dashboard.webp" type="image/webp">
+    <img src="/assets/shots/kintone-cross-app-dashboard.png" alt="Kintone cross-app dashboard built with Kinplug: KPI tiles, a Sankey of region to product line, and an actual-versus-target gauge, all reading from two Kintone apps at once" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>One dashboard reading two Kintone apps — actuals from the pipeline app, targets from another, joined on a shared key.</figcaption>
+</figure>
+
     <p style="color:var(--ink-soft); line-height:1.8; margin:24px 0 32px; font-size:1.05rem;">
       kintone の集計は、ひとつのアプリの中で完結してしまいます。売上アプリと目標アプリ、実績と予算 — 別々のアプリにあるだけで、比較するには CSV に落とすしかない。Kinplug Dashboard は<strong>共通キーでアプリ同士を並べて比較</strong>し、<strong>複数アプリの行をまとめて集計</strong>します。アプリの構造は変更しません。
     </p>
@@ -317,6 +331,14 @@
 <section class="sec sec-deep">
   <div class="wrap wrap-tight">
     <h2 class="h2">日付とドロップダウンが、そのまま噛み合う</h2>
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-dashboard-drill-through.webp" type="image/webp">
+    <img src="/assets/shots/kintone-dashboard-drill-through.png" alt="Kinplug drill-through panel showing the 110 Kintone records behind a single chart datapoint, with search and CSV download" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>Click any datapoint to open the records behind it — searchable, downloadable, drawn through a cross-app join.</figcaption>
+</figure>
+
     <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
       売上アプリの受注日は<strong>日付フィールド</strong>、目標アプリは「FY2025」「Q1」の<strong>ドロップダウン</strong> — 本来なら揃わない組み合わせです。Kinplug Dashboard は日付を年度・四半期・月に変換して自動で対応付けます。<strong>年度は4月開始が既定</strong>（変更可）なので、2025-05-02 は Q1・FY2025 として扱われます。予実管理がデータ移行なしで成立します。
     </p>
@@ -326,6 +348,14 @@
 <section class="sec sec-white">
   <div class="wrap wrap-tight">
     <h2 class="h2">外部サーバーに、データを出しません</h2>
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-chart-types-gallery.webp" type="image/webp">
+    <img src="/assets/shots/kintone-chart-types-gallery.png" alt="Kinplug chart gallery for Kintone showing Sankey, treemap, sunburst, funnel, waterfall, radar and box plot charts that Kintone cannot draw natively" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>Forty-two chart types. Kintone’s own API accepts nine chart values, and only seven of them are charts.</figcaption>
+</figure>
+
     <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
       集計はすべてブラウザ内で、<strong>閲覧しているユーザー自身の kintone 権限</strong>で実行されます。データを預かる外部サーバーはありません。見えないはずのレコードは、ダッシュボードでも見えません — kintone のアクセス権がそのまま効きます。稟議・情報システム部門の確認が通りやすい構成です。
     </p>
@@ -340,6 +370,14 @@
 <section class="sec sec-deep">
   <div class="wrap wrap-tight">
     <h2 class="h2">krewDashboard との比較</h2>
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-dashboard-space-portal.webp" type="image/webp">
+    <img src="/assets/shots/kintone-dashboard-space-portal.png" alt="A Kinplug dashboard embedded on a Kintone space portal, sitting beside the space’s app list" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>Embed a live dashboard on a Kintone space portal — each viewer still sees only the records their permissions allow.</figcaption>
+</figure>
+
     <p style="color:var(--ink-soft); line-height:1.8; margin-top:20px;">
       メシウス社の krewDashboard は、この分野で実績のある優れた製品です。どちらも kintone スタンダードコース以上が必要で、30日間の無料試用があります。公開情報で異なる点は次のとおりです。
     </p>
@@ -357,6 +395,22 @@
   <div class="wrap wrap-narrow">
     <div class="eyebrow eyebrow-center" style="color:var(--clay);">Get started</div>
     <h2 class="cta-title">30 days, every feature,<br>no credit card.</h2>
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-dashboard-builder.webp" type="image/webp">
+    <img src="/assets/shots/kintone-dashboard-builder.png" alt="The Kinplug dashboard builder for Kintone: a twelve-column grid with KPI, gauge, donut, funnel, radar, treemap and waterfall tiles being arranged" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>Build one yourself — add a chart, size it, drag it into place. No code.</figcaption>
+</figure>
+
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-dashboard-mobile.webp" type="image/webp">
+    <img src="/assets/shots/kintone-dashboard-mobile.png" alt="The same Kinplug Kintone dashboard rendered on a mobile phone, showing KPI tiles and charts" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>The same dashboard on Kintone mobile, with nothing extra to set up.</figcaption>
+</figure>
+
     <p class="cta-desc">Sign in with Google or Microsoft, enter your Kintone subdomain, install the plugin. Live in 90 seconds.</p>
     <div class="cta-actions">
       <a href="/signup/" class="btn btn-clay btn-lg">Start 30-day trial<span class="arrow">→</span></a>

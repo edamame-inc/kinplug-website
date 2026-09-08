@@ -245,6 +245,12 @@
   ]
 }
 </script>
+
+<style>
+.shot{margin:34px 0;max-width:100%}
+.shot picture,.shot img{display:block;width:100%;height:auto;border:1px solid rgba(15,20,25,.12);border-radius:6px;background:#FBF8F2}
+.shot figcaption{font-size:.92rem;line-height:1.5;color:#5A6273;margin-top:10px}
+</style>
 </head>
 <body>
 
@@ -312,6 +318,14 @@
           Kintoneの中で、<br>
           <span class="h1-accent">すべて完結する。</span>
         </h1>
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-cross-app-dashboard.webp" type="image/webp">
+    <img src="/assets/shots/kintone-cross-app-dashboard.png" alt="Kintone cross-app dashboard built with Kinplug: KPI tiles, a Sankey of region to product line, and an actual-versus-target gauge, all reading from two Kintone apps at once" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>One dashboard reading two Kintone apps — actuals from the pipeline app, targets from another, joined on a shared key.</figcaption>
+</figure>
+
         <p class="lede">
           他社プラグインの設定は、別ポータルへのログインが必要です。kinplugの設定はKintone内で完結する。2019年から現場に立つ、小さなチームの仕事です。
         </p>
@@ -400,6 +414,14 @@
     <div class="sec-head-center">
       <div class="eyebrow eyebrow-center">設計思想</div>
       <h2 class="h2">連携サービス方式と、<br>ネイティブプラグイン方式。</h2>
+<figure class="shot">
+  <picture>
+    <source srcset="/assets/shots/kintone-chart-types-gallery.webp" type="image/webp">
+    <img src="/assets/shots/kintone-chart-types-gallery.png" alt="Kinplug chart gallery for Kintone showing Sankey, treemap, sunburst, funnel, waterfall, radar and box plot charts that Kintone cannot draw natively" width="1600" height="900" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>Forty-two chart types. Kintone’s own API accepts nine chart values, and only seven of them are charts.</figcaption>
+</figure>
+
       <p class="lede" style="margin:24px auto 0;">Kintoneプラグイン市場の多くは、実は「外部SaaSサービス」です。設定には専用ポータルへのログインが必要で、ユーザー・権限・運用が二重になります。kinplugは違います。</p>
     </div>
     <div class="native-compare">
