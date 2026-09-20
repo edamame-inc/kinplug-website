@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>krewDashboardの代替を探すなら — 料金体系と設計思想の違いを整理</title>
+<meta name="description" content="krewDashboardはkintoneダッシュボードの定番製品です。一方で、ユーザー数に応じて料金が変動する点、年度対応、データの処理場所は導入前に確認しておきたいところ。公開情報に基づいて違いを整理します。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="krewDashboardの代替を探すなら — 料金体系と設計思想の違いを整理">
+<meta property="og:description" content="krewDashboardはkintoneダッシュボードの定番製品です。一方で、ユーザー数に応じて料金が変動する点、年度対応、データの処理場所は導入前に確認しておきたいところ。公開情報に基づいて違いを整理します。">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="kinplug — native Kintone plugins">
+<meta property="og:image" content="https://kinplug.com/assets/og-dashboard.png">
+<meta property="og:url" content="https://kinplug.com/ja/blog/krewdashboard-alternative.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:title" content="krewDashboardの代替を探すなら — 料金体系と設計思想の違いを整理">
+<meta name="twitter:description" content="krewDashboardはkintoneダッシュボードの定番製品です。一方で、ユーザー数に応じて料金が変動する点、年度対応、データの処理場所は導入前に確認しておきたいところ。公開情報に基づいて違いを整理します。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-dashboard.png">
+<link rel="canonical" href="https://kinplug.com/ja/blog/krewdashboard-alternative.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/krewdashboard-alternative.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/blog/krewdashboard-alternative.html">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/blog/krewdashboard-alternative.html">
+<link rel="alternate" type="application/rss+xml" title="kinplug blog" href="/ja/feed.xml">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preload" as="style" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "krewDashboardの代替を探すなら — 料金体系と設計思想の違いを整理",
+  "description": "krewDashboardはkintoneダッシュボードの定番製品です。一方で、ユーザー数に応じて料金が変動する点、年度対応、データの処理場所は導入前に確認しておきたいところ。公開情報に基づいて違いを整理します。",
+  "image": "https://kinplug.com/assets/og-dashboard.png",
+  "inLanguage": "ja",
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "author": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinplug.com/ja/blog/krewdashboard-alternative.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "krewDashboardの料金はなぜ「〜」表記なのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "公開されている月額 ¥12,000〜／ドメインは最低価格で、krewの利用規約上、kintoneのユーザー数に応じて料金が変動します。契約期間中にユーザー数が変わった場合は変更申請が必要と明記されています。正確な金額はメシウス株式会社にご確認ください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kinplug Dashboardはユーザー数で料金が変わりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "変わりません。ドメイン単位の定額（月額¥9,800）で、kintoneのユーザー数は無制限です。提供中のすべてのプラグインがこの価格に含まれます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "両方を試してから決められますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "はい。どちらも30日間の無料試用を提供しています。同じkintone環境に両方を入れて、実際のデータで比較できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "krewDashboardから乗り換える場合、アプリの改修は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不要です。Kinplug Dashboardはアプリの構造を変更せず、共通キーでアプリ同士を突き合わせます。ダッシュボードの定義はkintoneのレコードとして保存されます。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">30日間無料で試す</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+<div class="wrap wrap-narrow">
+<h1 class="h1" style="text-wrap: balance;">krewDashboardの代替を探すなら</h1>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:22px; font-size:1.05rem;">krewDashboard（メシウス株式会社）は、kintoneのダッシュボード分野で最も実績のある製品です。ピボットテーブル、スライサー、ドリルダウン、Excelに近い操作感 — 完成度の高い製品であることは前提として、それでも代替を検討する理由がいくつかあります。<strong>公開情報に基づいて、事実だけを整理します。</strong></p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>まず前提: krewDashboardは良い製品です</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">ピボットテーブル、棒・折れ線・複合・面・円・散布図・レーダー・ゲージなど多彩な表現、スライサー、クロスフィルター、タイムライン、ドリルダウン。Excelに近い操作感で作れることが評価されています。<strong>機能面で不足があるから代替を探す、という話ではありません。</strong></p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">代替が検討されるのは、多くの場合「料金体系」「データの処理場所」「年度の扱い」のいずれかです。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>違い1: ユーザー数で料金が変動するかどうか</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">krewDashboardのシンプルエディションは<strong>月額 ¥12,000〜／ドメイン</strong>（年額 ¥120,000〜）と公開されています。注意したいのは「〜」の部分で、krewの利用規約には<strong>kintoneユーザー数の変更に伴って契約中でも料金が変動し、変更申請が必要</strong>と明記されています。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">つまり、組織が成長してkintoneユーザーが増えるたびに、プラグイン側の料金も動きます。予算を固定したい情報システム部門・経理にとっては、これが地味に効いてきます。Kinplug Dashboardは<strong>ドメイン単位の定額で、ユーザー数は無制限</strong>。人数が増えても申請も差額精算も発生しません。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>違い2: データがどこで処理されるか</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">稟議・セキュリティ審査で必ず聞かれる項目です。Kinplug Dashboardは<strong>集計をすべてブラウザ内で、閲覧しているユーザー自身のkintoneセッション</strong>で実行します。レコードを保持する外部サーバーが存在しないため、「データはkintoneから出ません」と一文で説明できます。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">kintoneのアクセス権がそのまま効くのも同じ理由です。見えないはずのレコードは、ダッシュボードにも出てきません。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>違い3: 年度（4月開始）と期間の突き合わせ</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">日本企業の予実管理では、<strong>4月開始の年度</strong>が前提になります。加えて実務でよくあるのが、売上アプリの受注日は<strong>日付フィールド</strong>、目標アプリの対象期間は「FY2025」「Q1」の<strong>ドロップダウン</strong>という組み合わせです。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">Kinplug Dashboardは日付から年度・四半期・月を導出し、ドロップダウンと自動で対応付けます。年度開始月は既定4月・変更可能です。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>公開情報の比較</h2>
+<div style="overflow-x:auto; margin-top:22px;"><table style="width:100%; border-collapse:collapse; font-size:0.9375rem;">
+<thead><tr style="border-bottom:2px solid var(--rule-mid);">
+<th style="text-align:left; padding:12px 10px;"></th><th style="text-align:left; padding:12px 10px;">krewDashboard</th><th style="text-align:left; padding:12px 10px;">Kinplug Dashboard</th></tr></thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>提供元</strong></td><td style="padding:12px 10px;">メシウス株式会社</td><td style="padding:12px 10px;">Edamame Inc.</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>月額</strong></td><td style="padding:12px 10px;">¥12,000〜／ドメイン（シンプルエディション）</td><td style="padding:12px 10px;">¥9,800（全プラグイン込み）</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>ユーザー数による変動</strong></td><td style="padding:12px 10px;">あり（利用規約に基づき変更申請が必要）</td><td style="padding:12px 10px;">なし（ユーザー数無制限）</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>集計の実行場所</strong></td><td style="padding:12px 10px;">製品仕様をご確認ください</td><td style="padding:12px 10px;">ブラウザ内（閲覧者のkintone権限で実行）</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>年度（4月開始）</strong></td><td style="padding:12px 10px;">製品仕様をご確認ください</td><td style="padding:12px 10px;">既定で4月開始・変更可</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>無料試用</strong></td><td style="padding:12px 10px;">30日間</td><td style="padding:12px 10px;">30日間</td></tr>
+<tr><td style="padding:12px 10px;"><strong>前提条件</strong></td><td style="padding:12px 10px;">kintoneスタンダードコース以上</td><td style="padding:12px 10px;">kintoneスタンダードコース以上</td></tr>
+</tbody></table></div>
+<p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:14px;">krewDashboardの価格・条件は、メシウス株式会社およびサイボウズ株式会社が公開している情報（執筆時点・税抜表記）に基づきます。最新の情報は各社サイトでご確認ください。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>どちらを選ぶか</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">ピボットテーブルを中心にExcelライクな分析を深くやりたいなら、krewDashboardは実績のある選択肢です。一方で<strong>料金を人数に左右されず固定したい</strong>、<strong>データを外部に出さない構成にしたい</strong>、<strong>年度と期間の突き合わせを前提にしたい</strong> — このいずれかが要件なら、Kinplug Dashboardを試す価値があります。どちらも30日間の無料試用があるので、実データで並べて判断するのが確実です。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>よくある質問</h2>
+<h3 style="margin-top:26px; font-size:1.05rem;">krewDashboardの料金はなぜ「〜」表記なのですか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">公開されている月額 ¥12,000〜／ドメインは最低価格で、krewの利用規約上、kintoneのユーザー数に応じて料金が変動します。契約期間中にユーザー数が変わった場合は変更申請が必要と明記されています。正確な金額はメシウス株式会社にご確認ください。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">Kinplug Dashboardはユーザー数で料金が変わりますか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">変わりません。ドメイン単位の定額（月額¥9,800）で、kintoneのユーザー数は無制限です。提供中のすべてのプラグインがこの価格に含まれます。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">両方を試してから決められますか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">はい。どちらも30日間の無料試用を提供しています。同じkintone環境に両方を入れて、実際のデータで比較できます。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">krewDashboardから乗り換える場合、アプリの改修は必要ですか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">不要です。Kinplug Dashboardはアプリの構造を変更せず、共通キーでアプリ同士を突き合わせます。ダッシュボードの定義はkintoneのレコードとして保存されます。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>30日間、全機能を試せます</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">Kinplug Dashboard は月額¥9,800（$69）の単一プランに含まれます。ユーザー数無制限、追加料金なし。カードの登録は不要です。</p>
+<div class="cta-actions" style="margin-top:26px;"><a href="/ja/plugins/dashboard/" class="btn btn-primary btn-lg">Kinplug Dashboard を見る<span class="arrow">→</span></a><a href="/ja/signup/" class="btn btn-secondary btn-lg">30日間無料で試す</a></div>
+</div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">30日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">30日間無料トライアル<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: <a href="https://edamame-jp.com" target="_blank" rel="noopener" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.3);">Edamame Inc.</a>（マニラ・東京） — Kintone Global Partner of the Year 2024受賞。2019年よりKintone運用。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/dashboard/">Kinplug Dashboard</a></li><li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>krewDashboard alternative for Kintone — how the pricing models and architecture differ</title>
+<meta name="description" content="krewDashboard is the established Kintone dashboard product. Before you commit, three things are worth checking: pricing that varies with your Kintone user count, where aggregation runs, and fiscal-year handling. A factual comparison from published sources.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="krewDashboard alternative for Kintone — how the pricing models and architecture differ">
+<meta property="og:description" content="krewDashboard is the established Kintone dashboard product. Before you commit, three things are worth checking: pricing that varies with your Kintone user count, where aggregation runs, and fiscal-year handling. A factual comparison from published sources.">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="kinplug — native Kintone plugins">
+<meta property="og:image" content="https://kinplug.com/assets/og-dashboard.png">
+<meta property="og:url" content="https://kinplug.com/blog/krewdashboard-alternative.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:title" content="krewDashboard alternative for Kintone — how the pricing models and architecture differ">
+<meta name="twitter:description" content="krewDashboard is the established Kintone dashboard product. Before you commit, three things are worth checking: pricing that varies with your Kintone user count, where aggregation runs, and fiscal-year handling. A factual comparison from published sources.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-dashboard.png">
+<link rel="canonical" href="https://kinplug.com/blog/krewdashboard-alternative.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/blog/krewdashboard-alternative.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/krewdashboard-alternative.html">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/blog/krewdashboard-alternative.html">
+<link rel="alternate" type="application/rss+xml" title="kinplug blog" href="/feed.xml">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preload" as="style" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "krewDashboard alternative for Kintone — how the pricing models and architecture differ",
+  "description": "krewDashboard is the established Kintone dashboard product. Before you commit, three things are worth checking: pricing that varies with your Kintone user count, where aggregation runs, and fiscal-year handling. A factual comparison from published sources.",
+  "image": "https://kinplug.com/assets/og-dashboard.png",
+  "inLanguage": "en",
+  "datePublished": "2026-08-03",
+  "dateModified": "2026-08-03",
+  "author": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinplug.com/blog/krewdashboard-alternative.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is krewDashboard priced with a \"from\" figure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The published ¥12,000/month per domain is a starting price. Under krew's terms of service the fee varies with your Kintone user count, and a change application is required when that number changes during a contract. Confirm exact figures with Mescius."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Kinplug Dashboard charge by user?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is a flat per-domain price of ¥9,800 / $69 per month with unlimited Kintone users, and every currently available plugin is included at that price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I trial both before deciding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Both offer a 30-day free trial, and both can be installed in the same Kintone environment, so you can compare them side by side on your real data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does switching require changing our apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Kinplug Dashboard matches apps on a shared key without schema changes, and dashboard definitions are stored as Kintone records."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>Operated by Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>Tokyo · Manila</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone work since 2019</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/about/">Company</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">JST 09:00–18:00 · same-day response</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/plugins/" >Plugins</a>
+        <a href="/pricing.html" >Pricing</a>
+        <a href="/compare/" >Compare</a>
+        <a href="/about/" >Company</a>
+        <a href="/docs/" >Docs</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" class="active">EN</a>
+          <a href="/ja/" >日本語</a>
+        </div>
+        <a href="/login.html" class="btn btn-secondary btn-sm">Sign in</a>
+        <a href="/signup/" class="btn btn-primary btn-sm">Start 30-day trial</a>
+        <button class="nav-toggle" aria-label="Menu">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+<div class="wrap wrap-narrow">
+<h1 class="h1" style="text-wrap: balance;">Looking for a krewDashboard alternative</h1>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:22px; font-size:1.05rem;">krewDashboard, from Mescius, is the most established dashboard product in the Kintone ecosystem — pivot tables, slicers, drill-down, an Excel-like feel. Taking that as given, there are still a few reasons teams evaluate alternatives. <strong>Here they are, from published sources only.</strong></p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>First, krewDashboard is a good product</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">Pivot tables, bar, line, combo, area, pie, scatter, radar and gauge visualisations, slicers, cross-filters, timeline and drill-down, with an Excel-like feel that users consistently praise. <strong>Nobody looks for an alternative because it lacks features.</strong></p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">The reasons that do come up are narrower: the pricing model, where aggregation happens, and fiscal-year handling.</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>Difference 1 — whether price moves with your user count</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">krewDashboard Simple edition is published at <strong>from ¥12,000/month per domain</strong> (¥120,000/year). The word doing the work is "from": krew's terms of service state that the fee <strong>varies with your Kintone user count, and a change application is required</strong> when that number changes mid-contract.</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">So every time the organisation grows and Kintone seats are added, the plugin cost moves too. For an IT or finance team trying to fix a budget line, that matters more than the headline number. Kinplug Dashboard is a <strong>flat per-domain price with unlimited users</strong> — no applications, no true-ups when headcount changes.</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>Difference 2 — where your data is processed</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">This is the question security review always asks. Kinplug Dashboard runs <strong>every calculation in the browser, under the viewing user's own Kintone session</strong>. There is no external server holding records, which means the answer to "does our data leave Kintone?" is a single sentence.</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">It also means Kintone's own permissions are the access control. If someone cannot see a record in Kintone, it does not appear in a dashboard either.</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>Difference 3 — fiscal years and period matching</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">Japanese target-vs-actual reporting assumes a <strong>fiscal year starting in April</strong>. And the common real-world shape is a sales app storing a genuine <strong>date field</strong> while the targets app stores the period as a <strong>dropdown</strong> reading "FY2025" or "Q1".</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">Kinplug Dashboard derives year, quarter and month from the date and matches them to those dropdowns automatically, with the fiscal start month configurable and set to April by default.</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>Published comparison</h2>
+<div style="overflow-x:auto; margin-top:22px;"><table style="width:100%; border-collapse:collapse; font-size:0.9375rem;">
+<thead><tr style="border-bottom:2px solid var(--rule-mid);"><th style="text-align:left; padding:12px 10px;"></th><th style="text-align:left; padding:12px 10px;">krewDashboard</th><th style="text-align:left; padding:12px 10px;">Kinplug Dashboard</th></tr></thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>Vendor</strong></td><td style="padding:12px 10px;">Mescius Inc.</td><td style="padding:12px 10px;">Edamame Inc.</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>Monthly</strong></td><td style="padding:12px 10px;">from ¥12,000 / domain (Simple edition)</td><td style="padding:12px 10px;">¥9,800 / $69 — all plugins included</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>Varies with user count</strong></td><td style="padding:12px 10px;">Yes — change application required under terms</td><td style="padding:12px 10px;">No — unlimited users</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>Where aggregation runs</strong></td><td style="padding:12px 10px;">check product documentation</td><td style="padding:12px 10px;">in-browser, under the viewer's Kintone session</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>Fiscal year (April start)</strong></td><td style="padding:12px 10px;">check product documentation</td><td style="padding:12px 10px;">April by default, configurable</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>Free trial</strong></td><td style="padding:12px 10px;">30 days</td><td style="padding:12px 10px;">30 days</td></tr>
+<tr><td style="padding:12px 10px;"><strong>Prerequisite</strong></td><td style="padding:12px 10px;">Kintone Standard course or above</td><td style="padding:12px 10px;">Kintone Standard course or above</td></tr>
+</tbody></table></div>
+<p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:14px;">krewDashboard pricing and conditions are as published by Mescius Inc. and Cybozu Inc. at the time of writing (excluding tax). Check their sites for current figures.</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>Which to choose</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">If deep Excel-style pivot analysis is the centre of what you need, krewDashboard is the proven option. If instead your requirement is <strong>a price that does not move with headcount</strong>, <strong>no external server holding your records</strong>, or <strong>fiscal-period matching out of the box</strong>, Kinplug Dashboard is worth trialling. Both offer 30 days free and both can be installed in the same environment — the fastest way to decide is to run them side by side on your own data.</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>Common questions</h2>
+<h3 style="margin-top:26px; font-size:1.05rem;">Why is krewDashboard priced with a "from" figure?</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">The published ¥12,000/month per domain is a starting price. Under krew's terms of service the fee varies with your Kintone user count, and a change application is required when that number changes during a contract. Confirm exact figures with Mescius.</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">Does Kinplug Dashboard charge by user?</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">No. It is a flat per-domain price of ¥9,800 / $69 per month with unlimited Kintone users, and every currently available plugin is included at that price.</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">Can I trial both before deciding?</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">Yes. Both offer a 30-day free trial, and both can be installed in the same Kintone environment, so you can compare them side by side on your real data.</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">Does switching require changing our apps?</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">No. Kinplug Dashboard matches apps on a shared key without schema changes, and dashboard definitions are stored as Kintone records.</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>Try it for 30 days, every feature</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">Kinplug Dashboard is included in the single plan — ¥9,800 / $69 per month, unlimited Kintone users, every available plugin, no card required to start.</p>
+<div class="cta-actions" style="margin-top:26px;"><a href="/plugins/dashboard/" class="btn btn-primary btn-lg">See Kinplug Dashboard<span class="arrow">→</span></a><a href="/signup/" class="btn btn-secondary btn-lg">Start 30-day trial</a></div>
+</div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">Get started</div>
+    <h2 class="cta-title">30 days, every feature,<br>no credit card.</h2>
+    <p class="cta-desc">Sign in with Google or Microsoft, enter your Kintone subdomain, install the plugin. Live in 90 seconds.</p>
+    <div class="cta-actions">
+      <a href="/signup/" class="btn btn-clay btn-lg">Start 30-day trial<span class="arrow">→</span></a>
+      <a href="/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">Contact us</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Native Kintone plugins. Operated by <a href="https://edamame-jp.com" target="_blank" rel="noopener" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.3);">Edamame Inc.</a> (Manila · Tokyo) — Kintone Global Partner of the Year 2024. Kintone work since 2019.</p>
+      </div>
+      <div class="footer-col"><h4>Plugins</h4><ul>
+        <li><a href="/plugins/dashboard/">Kinplug Dashboard</a></li><li><a href="/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/plugins/">All titles</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Resources</h4><ul>
+        <li><a href="/pricing.html">Pricing</a></li>
+        <li><a href="/compare/">Compare</a></li>
+        <li><a href="/docs/">Documentation</a></li>
+        <li><a href="/blog/">Journal</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>Legal disclosures</h5><p><strong>Seller</strong>: Edamame Inc. · <strong>Representative</strong>: Tom Arai · <strong>Address</strong>: Manila BGC, Philippines (Tokyo liaison available) · <strong>Contact</strong>: support@kinplug.com</p></div>
+        <div><h5>Billing & refunds</h5><p>Credit card (all plans), bank transfer (Standard+). Annual contracts include 2 free months. Monthly plans may cancel any time, billed through end of month. See <a href="/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">Terms</a>.</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/legal/privacy.html">Privacy</a>
+        <a href="/legal/terms.html">Terms</a>
+        <a href="/legal/security.html">Security</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>
