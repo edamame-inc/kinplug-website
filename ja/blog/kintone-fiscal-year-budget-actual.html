@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kintoneで予実管理を年度（4月開始）で回す — 日付とドロップダウンをどう突き合わせるか</title>
+<meta name="description" content="売上アプリの受注日は日付フィールド、目標アプリの対象期間は「FY2025」「Q1」のドロップダウン。実務ではごく普通のこの組み合わせが、kintone標準では突き合わせられません。年度（4月開始）を前提にした予実管理の作り方を整理します。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="kintoneで予実管理を年度（4月開始）で回す — 日付とドロップダウンをどう突き合わせるか">
+<meta property="og:description" content="売上アプリの受注日は日付フィールド、目標アプリの対象期間は「FY2025」「Q1」のドロップダウン。実務ではごく普通のこの組み合わせが、kintone標準では突き合わせられません。年度（4月開始）を前提にした予実管理の作り方を整理します。">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="kinplug — native Kintone plugins">
+<meta property="og:image" content="https://kinplug.com/assets/og-dashboard.png">
+<meta property="og:url" content="https://kinplug.com/ja/blog/kintone-fiscal-year-budget-actual.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:title" content="kintoneで予実管理を年度（4月開始）で回す — 日付とドロップダウンをどう突き合わせるか">
+<meta name="twitter:description" content="売上アプリの受注日は日付フィールド、目標アプリの対象期間は「FY2025」「Q1」のドロップダウン。実務ではごく普通のこの組み合わせが、kintone標準では突き合わせられません。年度（4月開始）を前提にした予実管理の作り方を整理します。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-dashboard.png">
+<link rel="canonical" href="https://kinplug.com/ja/blog/kintone-fiscal-year-budget-actual.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-fiscal-year-budget-actual.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-fiscal-year-budget-actual.html">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/blog/kintone-fiscal-year-budget-actual.html">
+<link rel="alternate" type="application/rss+xml" title="kinplug blog" href="/ja/feed.xml">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preload" as="style" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "kintoneで予実管理を年度（4月開始）で回す — 日付とドロップダウンをどう突き合わせるか",
+  "description": "売上アプリの受注日は日付フィールド、目標アプリの対象期間は「FY2025」「Q1」のドロップダウン。実務ではごく普通のこの組み合わせが、kintone標準では突き合わせられません。年度（4月開始）を前提にした予実管理の作り方を整理します。",
+  "image": "https://kinplug.com/assets/og-dashboard.png",
+  "inLanguage": "ja",
+  "datePublished": "2026-09-20",
+  "dateModified": "2026-09-20",
+  "author": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinplug.com/ja/blog/kintone-fiscal-year-budget-actual.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "kintone標準では予実管理はできませんか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1つのアプリ内に実績と目標を両方持たせれば可能です。ただし実務では目標と実績を別アプリで管理することが多く、その場合kintone標準のグラフでは両者を並べた集計ができません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "年度の開始月が4月以外でも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "使えます。Kinplug Dashboardでは年度の開始月を設定で変更できます。既定は4月開始です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "過去データの再計算は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "集計側で年度を導出する方式であれば不要です。アプリに年度フィールドを追加する方式では、既存レコードの一括更新が必要になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "「FY2025」以外の表記でも対応できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "対象期間のドロップダウンの値に合わせて対応付けます。表記ゆれがある場合は、先に値を統一しておくと安定します。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">30日間無料で試す</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+<div class="wrap wrap-narrow">
+<h1 class="h1" style="text-wrap: balance;">kintoneで予実管理を年度で回す</h1>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:22px; font-size:1.05rem;">予実管理がkintoneで止まる理由は、たいてい集計機能そのものではありません。<strong>売上アプリの受注日は日付フィールド、目標アプリの対象期間は「FY2025」「Q1」のドロップダウン</strong> — 業務設計としてはどちらも正しいのに、この2つが機械的に噛み合わない。ここが実際の詰まりどころです。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>なぜ日付とドロップダウンが噛み合わないのか</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">売上側は1件ずつ日付を持ちます。目標側は「FY2025の売上目標」という単位で、期間はドロップダウンかテキストで持つのが自然です。<strong>目標に日付を持たせても意味がない</strong>ため、この設計自体は合理的です。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">しかしkintone標準では、日付フィールドから年度や四半期を導出してドロップダウンと突き合わせる仕組みがありません。結果として「目標アプリ側にも日付を入れる」「売上側に年度のドロップダウンを足して手入力する」といった回避策が生まれ、入力漏れと不整合の原因になります。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>年度（4月開始）という日本固有の前提</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">多くの日本企業の会計年度は4月開始です。つまり <strong>2026年3月31日はFY2025のQ4、2026年4月1日はFY2026のQ1</strong>。暦年で集計する海外製ツールをそのまま使うと、期またぎの数字が静かにずれます。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">厄介なのは、このずれがエラーとして出ないことです。グラフは描画され、数字も出る。合計が合わないと気づくのは月次会議の場、というのが典型です。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>日付から年度・四半期を導出する</h2>
+<div style="overflow-x:auto; margin-top:22px;"><table style="width:100%; border-collapse:collapse; font-size:0.9375rem;">
+<thead><tr style="border-bottom:2px solid var(--rule-mid);"><th style="text-align:left; padding:12px 10px;">受注日（日付フィールド）</th><th style="text-align:left; padding:12px 10px;">年度</th><th style="text-align:left; padding:12px 10px;">四半期</th><th style="text-align:left; padding:12px 10px;">突き合わせ先（目標アプリのドロップダウン）</th></tr></thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px; font-family:'JetBrains Mono',monospace;">2025-04-01</td><td style="padding:12px 10px;">FY2025</td><td style="padding:12px 10px;">Q1</td><td style="padding:12px 10px;">FY2025 / Q1</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px; font-family:'JetBrains Mono',monospace;">2025-05-02</td><td style="padding:12px 10px;">FY2025</td><td style="padding:12px 10px;">Q1</td><td style="padding:12px 10px;">FY2025 / Q1</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px; font-family:'JetBrains Mono',monospace;">2025-10-15</td><td style="padding:12px 10px;">FY2025</td><td style="padding:12px 10px;">Q3</td><td style="padding:12px 10px;">FY2025 / Q3</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px; font-family:'JetBrains Mono',monospace;">2026-03-31</td><td style="padding:12px 10px;">FY2025</td><td style="padding:12px 10px;">Q4</td><td style="padding:12px 10px;">FY2025 / Q4</td></tr>
+<tr><td style="padding:12px 10px; font-family:'JetBrains Mono',monospace;">2026-04-01</td><td style="padding:12px 10px;">FY2026</td><td style="padding:12px 10px;">Q1</td><td style="padding:12px 10px;">FY2026 / Q1</td></tr>
+</tbody></table></div>
+<p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:14px;">年度の開始月は設定で変更できます（既定は4月）。1月開始・7月開始の企業にもそのまま対応します。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>作り方の選択肢</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;"><strong>方法1: 売上側に年度フィールドを足す。</strong> 計算フィールドやJavaScriptで受注日から年度を導出して保存します。動きますが、過去データの再計算が必要で、年度開始月が変わると全件更新になります。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;"><strong>方法2: 目標側を日付に変える。</strong> 目標に開始日・終了日を持たせて期間で突き合わせます。設計としては素直ですが、目標アプリを使う経理・営業企画にとっては入力が増えます。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;"><strong>方法3: 集計側で導出する。</strong> アプリはそのままで、ダッシュボード側が日付から年度・四半期・月を導出してドロップダウンに対応付けます。アプリの改修も過去データの再計算も不要で、年度開始月の変更も設定ひとつで済みます。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>予実ダッシュボードで確認すべきこと</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">製品を選ぶ際は、次の3点を実データで確認してください。<strong>(1) 年度の開始月を変更できるか</strong> — 1月開始固定の製品があります。<strong>(2) 日付フィールドと期間ドロップダウンを直接突き合わせられるか</strong> — できない場合、アプリ側の改修が前提になります。<strong>(3) 期またぎが正しいか</strong> — 3月31日と4月1日のレコードを1件ずつ入れて、別の年度に入ることを必ず確認します。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>よくある質問</h2>
+<h3 style="margin-top:26px; font-size:1.05rem;">kintone標準では予実管理はできませんか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">1つのアプリ内に実績と目標を両方持たせれば可能です。ただし実務では目標と実績を別アプリで管理することが多く、その場合kintone標準のグラフでは両者を並べた集計ができません。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">年度の開始月が4月以外でも使えますか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">使えます。Kinplug Dashboardでは年度の開始月を設定で変更できます。既定は4月開始です。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">過去データの再計算は必要ですか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">集計側で年度を導出する方式であれば不要です。アプリに年度フィールドを追加する方式では、既存レコードの一括更新が必要になります。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">「FY2025」以外の表記でも対応できますか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">対象期間のドロップダウンの値に合わせて対応付けます。表記ゆれがある場合は、先に値を統一しておくと安定します。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>年度を前提に作られたダッシュボード</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">Kinplug Dashboard は日付フィールドから年度・四半期・月を導出し、目標アプリのドロップダウンと自動で対応付けます。年度開始月は既定4月・変更可。アプリの改修も過去データの再計算も不要です。</p>
+<div class="cta-actions" style="margin-top:26px;"><a href="/ja/plugins/dashboard/" class="btn btn-primary btn-lg">Kinplug Dashboard を見る<span class="arrow">→</span></a><a href="/ja/signup/" class="btn btn-secondary btn-lg">30日間無料で試す</a></div>
+</div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">30日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">30日間無料トライアル<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: <a href="https://edamame-jp.com" target="_blank" rel="noopener" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.3);">Edamame Inc.</a>（マニラ・東京） — Kintone Global Partner of the Year 2024受賞。2019年よりKintone運用。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/dashboard/">Kinplug Dashboard</a></li><li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

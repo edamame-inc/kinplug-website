@@ -5,7 +5,7 @@
   <link>https://kinplug.com/blog/</link>
   <description>Technical writing on Kintone plugins, API behaviour and enterprise deployment.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 20 Sep 2026 11:44:16 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 11:58:54 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com vs kintone.com — understanding Kintone domain differences</title>
@@ -27,6 +27,13 @@
     <guid isPermaLink="true">https://kinplug.com/blog/kintone-dashboard-plugin-comparison.html</guid>
     <description>Before you commit to a Kintone dashboard plugin, three things are worth checking: whether pricing varies with your Kintone user count, where aggregation actually runs, and how fiscal years are handled. A practical evaluation guide.</description>
     <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Budget vs actual in Kintone with an April fiscal year — matching dates to period dropdowns</title>
+    <link>https://kinplug.com/blog/kintone-fiscal-year-budget-actual.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-fiscal-year-budget-actual.html</guid>
+    <description>Your sales app stores an order date. Your targets app stores </description>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>When Kintone lookup gets slow — scaling past 50,000 records</title>

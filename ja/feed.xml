@@ -5,7 +5,7 @@
   <link>https://kinplug.com/ja/blog/</link>
   <description>kintone のプラグイン開発、API の挙動、エンタープライズ導入に関する技術記事。</description>
   <language>ja</language>
-  <lastBuildDate>Sun, 20 Sep 2026 11:44:16 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 11:58:54 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/ja/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com と kintone.com の違い — Kintoneドメインの使い分け</title>
@@ -27,6 +27,13 @@
     <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-dashboard-plugin-comparison.html</guid>
     <description>kintoneのダッシュボードプラグインを選ぶ前に確認しておきたい3点 — ユーザー数で料金が変動するか、集計がどこで実行されるか、年度（4月開始）にどう対応するか。実務目線の評価ガイドです。</description>
     <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>kintoneで予実管理を年度（4月開始）で回す — 日付とドロップダウンをどう突き合わせるか</title>
+    <link>https://kinplug.com/ja/blog/kintone-fiscal-year-budget-actual.html</link>
+    <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-fiscal-year-budget-actual.html</guid>
+    <description>売上アプリの受注日は日付フィールド、目標アプリの対象期間は「FY2025」「Q1」のドロップダウン。実務ではごく普通のこの組み合わせが、kintone標準では突き合わせられません。年度（4月開始）を前提にした予実管理の作り方を整理します。</description>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>Kintoneルックアップが遅い時 — 50,000件スケールでの高速化</title>
