@@ -5,7 +5,7 @@
   <link>https://kinplug.com/blog/</link>
   <description>Technical writing on Kintone plugins, API behaviour and enterprise deployment.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 20 Sep 2026 11:18:48 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 11:44:16 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com vs kintone.com — understanding Kintone domain differences</title>
@@ -34,6 +34,13 @@
     <guid isPermaLink="true">https://kinplug.com/blog/kintone-lookup-performance-50k-records.html</guid>
     <description>Past 10,000 records, Kintone lookup becomes noticeably slow. Causes: the records API 10,000-offset limit and UI rendering cost. Solutions covering pre-filters, progressive loading, cursor API, and purpose-built plugins — verified at 50,000-record scale.</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Kintone mail and the SMTP basic auth deadline — what breaks, and when</title>
+    <link>https://kinplug.com/blog/kintone-mail-oauth-deadline.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-mail-oauth-deadline.html</guid>
+    <description>Google already switched off basic authentication for Gmail. Microsoft disables SMTP AUTH basic auth by default for existing Exchange Online tenants at the end of December 2026. Any Kintone customisation sending mail with a stored password will stop working. Here is the timeline and the migration path.</description>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>How to aggregate data across multiple Kintone apps — the limits and four options</title>

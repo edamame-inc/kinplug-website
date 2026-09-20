@@ -5,7 +5,7 @@
   <link>https://kinplug.com/ja/blog/</link>
   <description>kintone のプラグイン開発、API の挙動、エンタープライズ導入に関する技術記事。</description>
   <language>ja</language>
-  <lastBuildDate>Sun, 20 Sep 2026 11:18:48 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 11:44:16 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/ja/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com と kintone.com の違い — Kintoneドメインの使い分け</title>
@@ -34,6 +34,13 @@
     <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-lookup-performance-50k-records.html</guid>
     <description>Kintoneアプリのレコード数が10,000件を超えると、ルックアップが明確に遅くなります。API側のoffset制限とUI側のレンダリングコストが原因です。絞り込み、プログレッシブローディング、cursor API、専用プラグインなど、50,000件規模で実証された対策を整理します。</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>kintoneのメール送信と基本認証の終了 — 何が止まり、いつ止まるのか</title>
+    <link>https://kinplug.com/ja/blog/kintone-mail-oauth-deadline.html</link>
+    <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-mail-oauth-deadline.html</guid>
+    <description>Gmailの基本認証はすでに終了しています。Microsoftも2026年12月末に、既存テナントのSMTP AUTH基本認証を既定で無効化します。パスワードを保存して送信しているkintoneカスタマイズは動作しなくなります。公開されているスケジュールと移行先を整理します。</description>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>kintoneで複数アプリのデータを集計する方法 — 標準機能の限界と4つの選択肢</title>
