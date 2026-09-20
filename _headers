@@ -5,8 +5,21 @@
   X-Frame-Options: SAMEORIGIN
   Permissions-Policy: geolocation=(), microphone=(), camera=()
 
-/assets/*
-  Cache-Control: public, max-age=31536000, immutable
+# NOTE: these assets use STABLE filenames (style.css, not style.a3f2b1.css), so
+# `immutable` must not be used — it tells browsers never to revalidate, which
+# strands every visitor on a stale stylesheet after a deploy. Revalidate instead;
+# ETags make that cheap (304, no body).
+/assets/css/*
+  Cache-Control: public, max-age=600, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=600, must-revalidate
+
+/assets/*.png
+  Cache-Control: public, max-age=604800
+
+/assets/*.svg
+  Cache-Control: public, max-age=604800
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
