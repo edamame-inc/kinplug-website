@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>kinplug — Kintone plugin engineering</title>
+  <link>https://kinplug.com/blog/</link>
+  <description>Technical writing on Kintone plugins, API behaviour and enterprise deployment, from the team that builds KinPlug.</description>
+  <language>en-us</language>
+  <lastBuildDate>Sun, 20 Sep 2026 10:19:34 GMT</lastBuildDate>
+  <atom:link href="https://kinplug.com/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>cybozu.com vs kintone.com — understanding Kintone domain differences</title>
+    <link>https://kinplug.com/blog/cybozu-com-vs-kintone-com.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/cybozu-com-vs-kintone-com.html</guid>
+    <description>Both cybozu.com and kintone.com are Cybozu&#x27;s Kintone, but they differ in contract era, data residency, and plugin compatibility. Critical differences for plugin selection, SSO, IP-restricted environments, explained from production experience.</description>
+    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>How to choose a Kintone plugin — 5 axes that matter</title>
+    <link>https://kinplug.com/blog/how-to-choose-kintone-plugin.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/how-to-choose-kintone-plugin.html</guid>
+    <description>Kintone plugin selection is not about feature checklists. It is about architecture, vendor continuity, cost structure, security, and operational burden. This framework helps buyers avoid year-3 regret by evaluating what features-comparison tables do not show.</description>
+    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>When Kintone lookup gets slow — scaling past 50,000 records</title>
+    <link>https://kinplug.com/blog/kintone-lookup-performance-50k-records.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-lookup-performance-50k-records.html</guid>
+    <description>Past 10,000 records, Kintone lookup becomes noticeably slow. Causes: the records API 10,000-offset limit and UI rendering cost. Solutions covering pre-filters, progressive loading, cursor API, and purpose-built plugins — verified at 50,000-record scale.</description>
+    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>How to aggregate data across multiple Kintone apps — the limits and four options</title>
+    <link>https://kinplug.com/blog/kintone-multiple-apps-aggregate.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-multiple-apps-aggregate.html</guid>
+    <description>Kintone&#x27;s built-in graphs aggregate within a single app. The moment sales sit in one app and targets in another, you cannot chart them together. Related records, JavaScript, CSV export and dedicated plugins — compared honestly, including where each breaks.</description>
+    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Passing Japanese enterprise ringi approval for Kintone plugins</title>
+    <link>https://kinplug.com/blog/kintone-plugin-enterprise-procurement-ringi.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-plugin-enterprise-procurement-ringi.html</guid>
+    <description>How to navigate the ringi (稟議) approval process for Kintone plugins in Japanese enterprises. Five required document sets, vendor selection criteria that pass, timeline acceleration techniques — from real deployment experience.</description>
+    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Kintone plugin OAuth 2.0 migration — technical implementation guide</title>
+    <link>https://kinplug.com/blog/kintone-plugin-oauth-migration-technical-guide.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-plugin-oauth-migration-technical-guide.html</guid>
+    <description>Step-by-step migration from SMTP basic authentication to OAuth 2.0 for Kintone mail plugins, with Node.js + Kintone implementation examples. Authorization code flow, token storage, refresh, Send As delegation, error handling, and subdomain scoping for enterprise deployments.</description>
+    <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Microsoft 365 basic auth shutdown — Kintone mail after April 2026</title>
+    <link>https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/microsoft-365-oauth-kintone-mail-2026.html</guid>
+    <description>On April 1, 2026, Microsoft 365 shuts down SMTP basic authentication, breaking most Kintone mail plugins. Symptoms, migration options, and OAuth 2.0 transition steps from a Kintone consultancy that has worked with production environments since 2019.</description>
+    <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Why most Kintone plugins live outside Kintone</title>
+    <link>https://kinplug.com/blog/why-kintone-plugins-external-portals.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/why-kintone-plugins-external-portals.html</guid>
+    <description>Why Kintone plugins beat external BI portals for reporting: no data leaves Kintone, permissions are respected per viewer, and there is no second login or separate server to run.</description>
+    <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,46 @@
+# kinplug
+
+> Premium plugins for Kintone (Cybozu), built by Edamame Inc. — Kintone Global Partner
+> of the Year 2024. Three products ship today: Dashboard, Mail and PDF Pro. One published
+> price, ¥9,800 / $69 per month for every available plugin, 30-day free trial, no free tier.
+
+Edamame Inc. is a Kintone consultancy in Manila and Tokyo. KinPlug plugins come out of real
+client deployments rather than a product roadmap, which is why they tend to solve the specific
+places Kintone stops.
+
+## Products
+
+- [Kinplug Dashboard](https://kinplug.com/plugins/dashboard/): Cross-app dashboards. Kintone
+  aggregates inside one app; Dashboard compares and pools data across any apps on a shared key.
+  Matches a real date field against period dropdowns such as "FY2025" or "Q1", fiscal year
+  starting April by default. 42 chart types. All calculation runs in the browser under the
+  viewing user's own Kintone session, so no external server holds customer records.
+  Comparable to krewDashboard (Mescius), which is listed at ¥12,000/month per domain.
+- [Kinplug Mail](https://kinplug.com/plugins/mail/): Sends mail through the customer's own
+  Gmail or Microsoft 365 mailbox over OAuth 2.0, including Send As and shared mailboxes, so
+  replies land in the real corporate mailbox. Relevant because Google ended Gmail basic
+  authentication in 2024 and Microsoft is retiring it for Exchange Online — password-based
+  Kintone mail customisations stop working. Comparable to kMailer (Toyokumo), ¥15,000/month.
+- [PDF Pro](https://kinplug.com/plugins/pdf-pro/): WYSIWYG PDF template designer for Kintone
+  records, built so that anyone who can use Word can design a document.
+
+## Key technical facts
+
+- Kintone's REST API `offset` parameter caps at 10,000 records; beyond that the cursor API is
+  required. This breaks naive JavaScript customisations as data grows.
+- Kintone's `like` operator matches whole words, not substrings: searching "Home" does not
+  find "AllHome".
+- Related Records fields display records from another app but their values are NOT available
+  to Kintone's built-in graph and aggregation engine.
+- Kintone graphs aggregate within a single app only.
+
+## Reference
+
+- [Aggregating across multiple Kintone apps](https://kinplug.com/blog/kintone-multiple-apps-aggregate.html): the four real options and where each breaks
+- [Pricing](https://kinplug.com/pricing): one price, all plugins
+- [Plugin catalogue](https://kinplug.com/plugins/)
+- [Japanese site](https://kinplug.com/ja/)
+
+## Contact
+
+support@kinplug.com — answered by a person, in English or Japanese.
