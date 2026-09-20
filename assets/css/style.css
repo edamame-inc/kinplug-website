@@ -770,6 +770,14 @@ html[lang="ja"] .prose p { line-height: 1.95; }
 .callout-r { padding-left: 14px; }
 .callout-r::before { right: 100%; }
 @media (max-width: 1000px) { .callout { display: none; } }
+/* The hero callouts are positioned with negative offsets (left:-6% / right:-6%)
+   so they visually break out of the content column. On wide screens the page
+   gutter absorbs that; between ~1000px and ~1600px it did not, and the whole
+   document scrolled sideways. Pin them to the column edge in that band. */
+@media (min-width: 1001px) and (max-width: 1600px) {
+  .callout-r { left: 0 !important; }
+  .callout-l { right: 0 !important; }
+}
 
 /* =============================================================
    PLUGIN CARDS
