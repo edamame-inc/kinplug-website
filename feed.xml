@@ -5,7 +5,7 @@
   <link>https://kinplug.com/blog/</link>
   <description>Technical writing on Kintone plugins, API behaviour and enterprise deployment.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 20 Sep 2026 10:45:12 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 11:18:48 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com vs kintone.com — understanding Kintone domain differences</title>
@@ -20,6 +20,13 @@
     <guid isPermaLink="true">https://kinplug.com/blog/how-to-choose-kintone-plugin.html</guid>
     <description>Kintone plugin selection is not about feature checklists. It is about architecture, vendor continuity, cost structure, security, and operational burden. This framework helps buyers avoid year-3 regret by evaluating what features-comparison tables do not show.</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Choosing a Kintone dashboard plugin — pricing models, data location and fiscal years</title>
+    <link>https://kinplug.com/blog/kintone-dashboard-plugin-comparison.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-dashboard-plugin-comparison.html</guid>
+    <description>Before you commit to a Kintone dashboard plugin, three things are worth checking: whether pricing varies with your Kintone user count, where aggregation actually runs, and how fiscal years are handled. A practical evaluation guide.</description>
+    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>When Kintone lookup gets slow — scaling past 50,000 records</title>
@@ -48,13 +55,6 @@
     <guid isPermaLink="true">https://kinplug.com/blog/kintone-plugin-oauth-migration-technical-guide.html</guid>
     <description>Step-by-step migration from SMTP basic authentication to OAuth 2.0 for Kintone mail plugins, with Node.js + Kintone implementation examples. Authorization code flow, token storage, refresh, Send As delegation, error handling, and subdomain scoping for enterprise deployments.</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>krewDashboard alternative for Kintone — how the pricing models and architecture differ</title>
-    <link>https://kinplug.com/blog/krewdashboard-alternative.html</link>
-    <guid isPermaLink="true">https://kinplug.com/blog/krewdashboard-alternative.html</guid>
-    <description>krewDashboard is the established Kintone dashboard product. Before you commit, three things are worth checking: pricing that varies with your Kintone user count, where aggregation runs, and fiscal-year handling. A factual comparison from published sources.</description>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>Microsoft 365 basic auth shutdown — Kintone mail after April 2026</title>

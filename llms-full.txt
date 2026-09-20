@@ -15,12 +15,11 @@ places Kintone stops.
   Matches a real date field against period dropdowns such as "FY2025" or "Q1", fiscal year
   starting April by default. 42 chart types. All calculation runs in the browser under the
   viewing user's own Kintone session, so no external server holds customer records.
-  Comparable to krewDashboard (Mescius), which is listed at ¥12,000/month per domain.
 - [Kinplug Mail](https://kinplug.com/plugins/mail/): Sends mail through the customer's own
   Gmail or Microsoft 365 mailbox over OAuth 2.0, including Send As and shared mailboxes, so
   replies land in the real corporate mailbox. Relevant because Google ended Gmail basic
   authentication in 2024 and Microsoft is retiring it for Exchange Online — password-based
-  Kintone mail customisations stop working. Comparable to kMailer (Toyokumo), ¥15,000/month.
+  Kintone mail customisations stop working.
 - [PDF Pro](https://kinplug.com/plugins/pdf-pro/): WYSIWYG PDF template designer for Kintone
   records, built so that anyone who can use Word can design a document.
 

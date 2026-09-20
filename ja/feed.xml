@@ -5,7 +5,7 @@
   <link>https://kinplug.com/ja/blog/</link>
   <description>kintone のプラグイン開発、API の挙動、エンタープライズ導入に関する技術記事。</description>
   <language>ja</language>
-  <lastBuildDate>Sun, 20 Sep 2026 10:45:12 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 11:18:48 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/ja/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com と kintone.com の違い — Kintoneドメインの使い分け</title>
@@ -20,6 +20,13 @@
     <guid isPermaLink="true">https://kinplug.com/ja/blog/how-to-choose-kintone-plugin.html</guid>
     <description>Kintoneプラグインの選定基準は、機能の有無ではありません。アーキテクチャ、ベンダー継続性、コスト構造、セキュリティ、運用負担の5軸で判断すれば、機能比較表では見えない要素が明確になります。</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>kintoneダッシュボードプラグインの選び方 — 料金体系・データの処理場所・年度対応</title>
+    <link>https://kinplug.com/ja/blog/kintone-dashboard-plugin-comparison.html</link>
+    <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-dashboard-plugin-comparison.html</guid>
+    <description>kintoneのダッシュボードプラグインを選ぶ前に確認しておきたい3点 — ユーザー数で料金が変動するか、集計がどこで実行されるか、年度（4月開始）にどう対応するか。実務目線の評価ガイドです。</description>
+    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>Kintoneルックアップが遅い時 — 50,000件スケールでの高速化</title>
@@ -48,13 +55,6 @@
     <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html</guid>
     <description>Kintoneメールプラグインを SMTP基本認証からOAuth 2.0に切り替える手順を、Node.js + Kintoneの実装例とともに具体的に解説。認可コードフロー、トークン保存、リフレッシュ、Send As（委任送信）、エラーハンドリング、サブドメイン単位でのスコープなど、エンタープライズ運用で必要な実装ポイントを網羅。</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
-  </item>
-  <item>
-    <title>krewDashboardの代替を探すなら — 料金体系と設計思想の違いを整理</title>
-    <link>https://kinplug.com/ja/blog/krewdashboard-alternative.html</link>
-    <guid isPermaLink="true">https://kinplug.com/ja/blog/krewdashboard-alternative.html</guid>
-    <description>krewDashboardはkintoneダッシュボードの定番製品です。一方で、ユーザー数に応じて料金が変動する点、年度対応、データの処理場所は導入前に確認しておきたいところ。公開情報に基づいて違いを整理します。</description>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信</title>
