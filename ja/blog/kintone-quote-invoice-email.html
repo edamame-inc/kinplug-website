@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kintoneから見積書・請求書を作って、そのまま自社アドレスで送る</title>
+<meta name="description" content="レコードから帳票PDFを生成し、レコードに添付し、自社のGmail / Microsoft 365から送信するまでをkintone内で完結させる方法。CSV出力もExcelもメーラーへの持ち替えも不要です。">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="kintoneから見積書・請求書を作って、そのまま自社アドレスで送る">
+<meta property="og:description" content="レコードから帳票PDFを生成し、レコードに添付し、自社のGmail / Microsoft 365から送信するまでをkintone内で完結させる方法。CSV出力もExcelもメーラーへの持ち替えも不要です。">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="kinplug — native Kintone plugins">
+<meta property="og:image" content="https://kinplug.com/assets/og-mail.png">
+<meta property="og:url" content="https://kinplug.com/ja/blog/kintone-quote-invoice-email.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="kinplug">
+<meta name="twitter:title" content="kintoneから見積書・請求書を作って、そのまま自社アドレスで送る">
+<meta name="twitter:description" content="レコードから帳票PDFを生成し、レコードに添付し、自社のGmail / Microsoft 365から送信するまでをkintone内で完結させる方法。CSV出力もExcelもメーラーへの持ち替えも不要です。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://kinplug.com/assets/og-mail.png">
+<link rel="canonical" href="https://kinplug.com/ja/blog/kintone-quote-invoice-email.html">
+<link rel="alternate" hreflang="ja" href="https://kinplug.com/ja/blog/kintone-quote-invoice-email.html">
+<link rel="alternate" hreflang="en" href="https://kinplug.com/blog/kintone-quote-invoice-email.html">
+<link rel="alternate" hreflang="x-default" href="https://kinplug.com/blog/kintone-quote-invoice-email.html">
+<link rel="alternate" type="application/rss+xml" title="kinplug blog" href="/ja/feed.xml">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preload" as="style" href="/assets/css/style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "kintoneから見積書・請求書を作って、そのまま自社アドレスで送る",
+  "description": "レコードから帳票PDFを生成し、レコードに添付し、自社のGmail / Microsoft 365から送信するまでをkintone内で完結させる方法。CSV出力もExcelもメーラーへの持ち替えも不要です。",
+  "image": "https://kinplug.com/assets/og-mail.png",
+  "inLanguage": "ja",
+  "datePublished": "2026-09-20",
+  "dateModified": "2026-09-20",
+  "author": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Edamame Inc.",
+    "url": "https://kinplug.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://kinplug.com/ja/blog/kintone-quote-invoice-email.html"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Excelのテンプレートをそのまま使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "そのままの読み込みには対応していません。ただしPDF Proのデザイナーは、Wordのように直接ページ上で編集する設計です。既存の帳票レイアウトを再現して、レコードのフィールドを差し込む形で作り直すことになります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "明細行（サブテーブル）は反映されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "反映されます。明細テーブルは行単位でページ分割され、続きのページにも見出し行が繰り返されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "送信前に内容を確認できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "できます。宛先・件名・本文・添付ファイルを確認してから送信する画面が開きます。差し込み内容の確認もこの時点で行えます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "受信者にkintoneのアカウントは必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不要です。通常のメールとして任意のアドレスに届きます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "PDFをレコードに自動添付するには何が必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "レンダリングサービスの設定が必要です。ブラウザの印刷ダイアログ経由の構成では、生成されたPDFのデータをスクリプトが受け取れないため、印刷・保存はできても自動添付は行えません。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span>運営: Edamame Inc.</span>
+        <span class="topbar-dot">·</span>
+        <span>東京・マニラ</span>
+        <span class="topbar-dot">·</span>
+        <span>Kintone運用2019年より</span>
+      </div>
+      <div class="topbar-right">
+        <a href="/ja/about/">会社概要</a>
+        <span class="topbar-dot">·</span>
+        <a href="mailto:support@kinplug.com">平日JST 09:00–18:00 当日対応</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/ja/" class="logo" aria-label="kinplug">
+        <span class="logo-mark">
+          <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#1B2B5A" stroke-width="2"/>
+            <rect x="9" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <rect x="22" y="6" width="3" height="12" fill="#1B2B5A"/>
+            <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+          </svg>
+        </span>
+        <span class="logo-word">kinplug</span>
+      </a>
+      <div class="nav-menu">
+        <a href="/ja/plugins/" >プラグイン</a>
+        <a href="/ja/pricing.html" >料金</a>
+        <a href="/ja/compare/" >他社比較</a>
+        <a href="/ja/about/" >会社情報</a>
+        <a href="/ja/docs/" >ドキュメント</a>
+      </div>
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <a href="/" >EN</a>
+          <a href="/ja/" class="active">日本語</a>
+        </div>
+        <a href="/ja/login.html" class="btn btn-secondary btn-sm">サインイン</a>
+        <a href="/ja/signup/" class="btn btn-primary btn-sm">30日間無料で試す</a>
+        <button class="nav-toggle" aria-label="メニュー">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3zm0 4h14v2H3zm0 4h14v2H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<article>
+<section class="sec hero-section">
+<div class="wrap wrap-narrow">
+<h1 class="h1" style="text-wrap: balance;">kintoneから見積書を作って、そのまま送る</h1>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:22px; font-size:1.05rem;">見積書の業務が面倒なのは、作ることではなく<strong>受け渡し</strong>です。kintoneで案件を管理しているのにExcelで帳票を作り、PDFに変換し、メーラーを開いて添付し直す。<strong>この持ち替えのたびに、版の取り違えと送り忘れが起きます。</strong>レコードから生成してそのまま送るところまでを、kintone内で完結させる構成を整理します。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>よくある現在の流れ</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">案件レコードに金額も明細も揃っている。ところが帳票にする段になると、Excelテンプレートを開いて転記するか、CSVで書き出してマクロに流す。できたPDFを保存して、Outlookを開いて、先方のアドレスを探して、添付して送る。</p>
+<strong>問題は手間の量ではなく、切れ目の数です。</strong>転記でひと桁間違える。古いテンプレートを開く。添付し忘れて「ファイルが付いていません」と返信が来る。どれも珍しくありません。そして送った記録はkintoneに残らず、担当者のメーラーの中だけにあります。
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>レコードから送信までの流れ</h2>
+<div style="overflow-x:auto; margin-top:22px;"><table style="width:100%; border-collapse:collapse; font-size:0.9375rem;">
+<thead><tr style="border-bottom:2px solid var(--rule-mid);"><th style="text-align:left; padding:12px 10px; width:60px;">手順</th><th style="text-align:left; padding:12px 10px;">担当者の操作</th><th style="text-align:left; padding:12px 10px;">裏で起きていること</th></tr></thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>1</strong></td><td style="padding:12px 10px;">見積レコードを開き、PDF生成ボタンを押す</td><td style="padding:12px 10px;">テンプレートにレコードの値と明細行が差し込まれ、PDFが生成される</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>2</strong></td><td style="padding:12px 10px;">（操作なし）</td><td style="padding:12px 10px;">生成されたPDFがレコードの添付ファイルフィールドに保存される</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>3</strong></td><td style="padding:12px 10px;">メール送信ボタンを押す</td><td style="padding:12px 10px;">宛先・件名・本文がレコードの値から差し込まれ、添付ファイルが選択された状態で確認画面が開く</td></tr>
+<tr style="border-bottom:1px solid var(--rule);"><td style="padding:12px 10px;"><strong>4</strong></td><td style="padding:12px 10px;">内容を確認して送信</td><td style="padding:12px 10px;">自社のGmail / Microsoft 365メールボックスからOAuth 2.0で送信される</td></tr>
+<tr><td style="padding:12px 10px;"><strong>5</strong></td><td style="padding:12px 10px;">—</td><td style="padding:12px 10px;">送信済みトレイに残り、返信は同じメールボックスに届く</td></tr>
+</tbody></table></div>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>自社アドレスから送る、という部分</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">配信サービス経由で送ると、差出人はサービス側の基盤になります。<strong>返信が現場の見ているメールボックスに届かず、送信済みトレイにも残りません。</strong>見積書のように返事が来る前提の文書では、これは実務上かなり困ります。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">OAuth 2.0で自社のGmail / Microsoft 365メールボックスから送れば、<code>sales@</code> のような共有メールボックスからの送信（Send As）にも対応でき、返信はそのまま同じ場所に届きます。担当者が休んでいても誰かが見られる、というだけで運用が変わります。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>構成する部品</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;"><strong>帳票側（PDF Pro）</strong> — レコードの値と明細行をテンプレートに差し込んでPDFを生成し、レコードの添付ファイルフィールドに保存します。テンプレートはWordのように直接編集できる設計です。</p>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;"><strong>送信側（Kinplug Mail）</strong> — レコードの添付ファイルを選んで、宛先・件名・本文にレコードの値を差し込み、自社のメールボックスからOAuth 2.0で送信します。CC・BCC、送信前の確認画面にも対応します。</p>
+<p style="color:var(--ink-mute); font-size:0.8125rem; margin-top:18px;">補足: PDFをレコードに自動添付する動作にはレンダリングサービスの設定が必要です。ブラウザの印刷ダイアログ経由で出力する構成では、生成したPDFのデータをスクリプト側で受け取れないため、添付までは行えません。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>導入前に確認すること</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;"><strong>(1) 添付ファイルフィールドの扱い。</strong> 既存の添付を消さずに追記されるか確認してください。1件だけ書き込むAPIの使い方をすると、既存ファイルがすべて消えます。<br><br><strong>(2) 共有メールボックスから送れるか。</strong> 個人アカウントからしか送れない構成だと、担当者不在時に返信が滞ります。<br><br><strong>(3) 送信記録がkintoneに残るか。</strong> いつ誰に何を送ったかがレコード側から追えないと、結局メーラーを見に行くことになります。</p>
+</div>
+</section>
+<section class="sec sec-white">
+<div class="wrap wrap-narrow">
+<h2>よくある質問</h2>
+<h3 style="margin-top:26px; font-size:1.05rem;">Excelのテンプレートをそのまま使えますか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">そのままの読み込みには対応していません。ただしPDF Proのデザイナーは、Wordのように直接ページ上で編集する設計です。既存の帳票レイアウトを再現して、レコードのフィールドを差し込む形で作り直すことになります。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">明細行（サブテーブル）は反映されますか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">反映されます。明細テーブルは行単位でページ分割され、続きのページにも見出し行が繰り返されます。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">送信前に内容を確認できますか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">できます。宛先・件名・本文・添付ファイルを確認してから送信する画面が開きます。差し込み内容の確認もこの時点で行えます。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">受信者にkintoneのアカウントは必要ですか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">不要です。通常のメールとして任意のアドレスに届きます。</p>
+<h3 style="margin-top:26px; font-size:1.05rem;">PDFをレコードに自動添付するには何が必要ですか？</h3>
+<p style="color:var(--ink-soft); line-height:1.85;">レンダリングサービスの設定が必要です。ブラウザの印刷ダイアログ経由の構成では、生成されたPDFのデータをスクリプトが受け取れないため、印刷・保存はできても自動添付は行えません。</p>
+</div>
+</section>
+<section class="sec sec-deep">
+<div class="wrap wrap-narrow">
+<h2>帳票も送信も、1つのプランに含まれます</h2>
+<p style="color:var(--ink-soft); line-height:1.85; margin-top:18px;">PDF Pro と Kinplug Mail は、どちらも月額 ¥9,800（$69）の単一プランに含まれます。ユーザー数無制限、追加料金なし。30日間の無料トライアルで、実際の帳票と実際のメールボックスで試せます。</p>
+<div class="cta-actions" style="margin-top:26px;"><a href="/ja/plugins/" class="btn btn-primary btn-lg">プラグインを見る<span class="arrow">→</span></a><a href="/ja/signup/" class="btn btn-secondary btn-lg">30日間無料で試す</a></div>
+</div>
+</section>
+</article>
+<div class="cta-wrap">
+  <div class="wrap wrap-narrow">
+    <div class="eyebrow eyebrow-center" style="color:var(--clay);">はじめる</div>
+    <h2 class="cta-title">30日間、全機能、<br>クレジットカード不要。</h2>
+    <p class="cta-desc">GoogleかMicrosoftでサインイン、Kintoneサブドメインを入力、プラグインをインストール。90秒で稼働開始。</p>
+    <div class="cta-actions">
+      <a href="/ja/signup/" class="btn btn-clay btn-lg">30日間無料トライアル<span class="arrow">→</span></a>
+      <a href="/ja/contact/" class="btn btn-secondary btn-lg" style="border-color:rgba(247,245,240,0.3); color:var(--paper);">お問い合わせ</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="/ja/" class="logo logo-light">
+          <span class="logo-mark">
+            <svg viewBox="0 0 34 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="32" height="22" rx="3" fill="none" stroke="#F7F5F0" stroke-width="2"/>
+              <rect x="9" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <rect x="22" y="6" width="3" height="12" fill="#F7F5F0"/>
+              <circle cx="17" cy="12" r="1.6" fill="#C47A42"/>
+            </svg>
+          </span>
+          <span class="logo-word">kinplug</span>
+        </a>
+        <p class="footer-desc">Kintoneのためのネイティブプラグイン。運営: <a href="https://edamame-jp.com" target="_blank" rel="noopener" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.3);">Edamame Inc.</a>（マニラ・東京） — Kintone Global Partner of the Year 2024受賞。2019年よりKintone運用。</p>
+      </div>
+      <div class="footer-col"><h4>プラグイン</h4><ul>
+        <li><a href="/ja/plugins/dashboard/">Kinplug Dashboard</a></li><li><a href="/ja/plugins/mail/">Kinplug Mail</a></li>
+        <li><a href="/ja/plugins/pdf-pro/">PDF Pro</a></li>
+        <li><a href="/ja/plugins/">全タイトル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>リソース</h4><ul>
+        <li><a href="/ja/pricing.html">料金</a></li>
+        <li><a href="/ja/compare/">他社比較</a></li>
+        <li><a href="/ja/docs/">ドキュメント</a></li>
+        <li><a href="/ja/blog/">ジャーナル</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>会社情報</h4><ul>
+        <li><a href="/ja/about/">会社概要</a></li>
+        <li><a href="/ja/contact/">お問い合わせ</a></li>
+        <li><a href="https://edamame.ph">Edamame Inc.</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>連絡先</h4><ul>
+        <li><a href="mailto:support@kinplug.com">support@kinplug.com</a></li>
+        <li><a href="mailto:billing@kinplug.com">billing@kinplug.com</a></li>
+        <li><a href="mailto:legal@kinplug.com">legal@kinplug.com</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-grid">
+        <div><h5>特定商取引法に基づく表記</h5><p><strong>販売事業者</strong>: Edamame Inc. · <strong>代表責任者</strong>: Tom Arai · <strong>所在地</strong>: フィリピン・マニラBGC（東京オフィス連絡可）· <strong>連絡先</strong>: support@kinplug.com</p></div>
+        <div><h5>支払方法・返金について</h5><p>クレジットカード（全プラン）・銀行振込（スタンダード以上）対応。年払い契約は2ヶ月分無料、月払い契約はいつでも解約可能、解約月末までの請求。詳細は<a href="/ja/legal/terms.html" style="color:var(--paper); border-bottom:1px solid rgba(247,245,240,0.5);">利用規約</a>。</p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 · Edamame Inc. · Since 2019</div>
+      <div class="footer-bottom-links">
+        <a href="/ja/legal/privacy.html">プライバシーポリシー</a>
+        <a href="/ja/legal/terms.html">利用規約</a>
+        <a href="/ja/legal/security.html">セキュリティ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/app.js"></script>
+</body>
+</html>

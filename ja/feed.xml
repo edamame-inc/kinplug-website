@@ -5,7 +5,7 @@
   <link>https://kinplug.com/ja/blog/</link>
   <description>kintone のプラグイン開発、API の挙動、エンタープライズ導入に関する技術記事。</description>
   <language>ja</language>
-  <lastBuildDate>Sun, 20 Sep 2026 11:58:54 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 19:17:52 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/ja/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com と kintone.com の違い — Kintoneドメインの使い分け</title>
@@ -69,6 +69,13 @@
     <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-plugin-oauth-migration-technical-guide.html</guid>
     <description>Kintoneメールプラグインを SMTP基本認証からOAuth 2.0に切り替える手順を、Node.js + Kintoneの実装例とともに具体的に解説。認可コードフロー、トークン保存、リフレッシュ、Send As（委任送信）、エラーハンドリング、サブドメイン単位でのスコープなど、エンタープライズ運用で必要な実装ポイントを網羅。</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>kintoneから見積書・請求書を作って、そのまま自社アドレスで送る</title>
+    <link>https://kinplug.com/ja/blog/kintone-quote-invoice-email.html</link>
+    <guid isPermaLink="true">https://kinplug.com/ja/blog/kintone-quote-invoice-email.html</guid>
+    <description>レコードから帳票PDFを生成し、レコードに添付し、自社のGmail / Microsoft 365から送信するまでをkintone内で完結させる方法。CSV出力もExcelもメーラーへの持ち替えも不要です。</description>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>Microsoft 365 基本認証停止 — 2026年4月以降のKintoneメール送信</title>

@@ -5,7 +5,7 @@
   <link>https://kinplug.com/blog/</link>
   <description>Technical writing on Kintone plugins, API behaviour and enterprise deployment.</description>
   <language>en-us</language>
-  <lastBuildDate>Sun, 20 Sep 2026 11:58:54 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 20 Sep 2026 19:17:52 GMT</lastBuildDate>
   <atom:link href="https://kinplug.com/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
     <title>cybozu.com vs kintone.com — understanding Kintone domain differences</title>
@@ -69,6 +69,13 @@
     <guid isPermaLink="true">https://kinplug.com/blog/kintone-plugin-oauth-migration-technical-guide.html</guid>
     <description>Step-by-step migration from SMTP basic authentication to OAuth 2.0 for Kintone mail plugins, with Node.js + Kintone implementation examples. Authorization code flow, token storage, refresh, Send As delegation, error handling, and subdomain scoping for enterprise deployments.</description>
     <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+  </item>
+  <item>
+    <title>Generate a quote in Kintone and send it from your own mailbox</title>
+    <link>https://kinplug.com/blog/kintone-quote-invoice-email.html</link>
+    <guid isPermaLink="true">https://kinplug.com/blog/kintone-quote-invoice-email.html</guid>
+    <description>Build the document from the record, attach it to the record, and send it over OAuth 2.0 from your own Gmail or Microsoft 365 mailbox — without exporting to Excel or switching to a mail client. How the workflow fits together, and what to check first.</description>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
   </item>
   <item>
     <title>Microsoft 365 basic auth shutdown — Kintone mail after April 2026</title>
