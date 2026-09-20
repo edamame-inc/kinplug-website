@@ -62,6 +62,31 @@
       } catch (e) { return iso; }
     }
 
+    // The trial is keyless and enforced server-side per subdomain, so handing the
+    // file over immediately is safe — and far better than making someone wait on
+    // an email before they can do anything.
+    function renderDownloads() {
+      var wrap = document.getElementById('su-downloads');
+      var list = document.getElementById('su-dl-list');
+      if (!wrap || !list) return;
+      fetch(API + '/downloads').then(function (r) { return r.json(); }).then(function (d) {
+        var want = ['dashboard', 'mail', 'pdf-pro'];
+        var names = { dashboard: 'Kinplug Dashboard', mail: 'Kinplug Mail', 'pdf-pro': 'PDF Pro' };
+        var rows = (d.plugins || []).filter(function (p) {
+          return want.indexOf(p.slug) !== -1 && p.available;
+        });
+        if (!rows.length) return;
+        rows.sort(function (a, b) { return want.indexOf(a.slug) - want.indexOf(b.slug); });
+        list.innerHTML = rows.map(function (p) {
+          return '<a class="btn btn-primary" style="width:100%;justify-content:space-between;display:flex;align-items:center;" '
+               + 'href="' + API + '/download/' + p.slug + '">'
+               + '<span>' + (names[p.slug] || p.slug) + '</span>'
+               + '<span style="font-size:0.75rem;opacity:.75;font-family:\'JetBrains Mono\',monospace;">v' + (p.version || '') + '</span></a>';
+        }).join('');
+        wrap.style.display = 'block';
+      }).catch(function () { /* email still carries the links */ });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       clearMsg();
@@ -85,6 +110,7 @@
         if (r.ok && r.data && r.data.success) {
           form.style.display = 'none';
           successBody.textContent = T.body(sub, fmtDate(r.data.expiresAt), email);
+          renderDownloads();
           success.style.display = 'block';
           success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
